@@ -15,6 +15,7 @@
 টাইপস্ক্রিপ্টের keyof একটি অপারেটর যা একটি অবজেক্ট টাইপ থেকে তার কী বের করে একটি ইউনিয়ন টাইপ তৈরি করে। এটি একটি অবজেক্ট টাইপের সমস্ত প্রপার্টির নামগুলোকে একটি নতুন টাইপ হিসেবে তৈরি করে।
 
 Example :
+.
 interface Person {
   name: string;
   age: number;
@@ -26,6 +27,6 @@ function getPersonProperty(key: PersonKeys) {
   ...
 }
 
-getPersonProperty("name"); // সঠিক
-getPersonProperty("age");  // সঠিক
+getPersonProperty("name"); // সঠিক,
+getPersonProperty("age");  // সঠিক,
 getPersonProperty("address"); // এটি একটি এরর দেবে
