@@ -8,6 +8,9 @@ const formatValue = (value: string | number | boolean) => {
   }
 };
 
+
+
+
 const getLength = (value: string | number[]) => {
   if (typeof value === "string") {
     return value.length;
@@ -15,6 +18,9 @@ const getLength = (value: string | number[]) => {
     return value.length;
   }
 };
+
+
+
 
 class Person {
   name: string;
@@ -24,19 +30,20 @@ class Person {
     this.age = age;
   }
   getDetails() {
-    return `Name: ${this.name}, Age: ${this.age}`;
+    return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
-
 
 type Item = {
   title: string;
   rating: number;
 };
-
 const filterByRating = (values: Item[]): Item[] => {
   return values.filter((value) => value.rating >= 4);
 };
+
+
+
 
 type User = {
   id: number;
@@ -44,10 +51,13 @@ type User = {
   email: string;
   isActive: boolean;
 };
-
 const filterActiveUsers = (values: User[]): User[] => {
   return values.filter((value) => value.isActive);
 };
+
+
+
+
 
 interface Book {
   title: string;
@@ -55,7 +65,6 @@ interface Book {
   publishedYear: number;
   isAvailable: boolean;
 }
-
 const printBookDetails = ({
   title,
   author,
@@ -69,13 +78,40 @@ const printBookDetails = ({
   );
 };
 
+
+
+
+
 const getUniqueValues = (array1: number[], array2: number[]) => {
-  const array = [];
-  array.push(...array1, ...array2);
-  const newArray = [...new Set(array)];
-  newArray.sort((a, b) => a - b);
-  return newArray;
+  const result: number[] = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    result[result.length] = array1[i];
+  }
+  for (let i = 0; i < array2.length; i++) {
+    result[result.length] = array2[i];
+  }
+
+  const unique: number[] = [];
+
+  for (let i = 0; i < result.length; i++) {
+    let found = false;
+    for (let j = 0; j < unique.length; j++) {
+      if (unique[j] === result[i]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      unique[unique.length] = result[i];
+    }
+  }
+  return unique;
 };
+
+
+
+
 
 type Product = {
   name: string;
@@ -83,7 +119,6 @@ type Product = {
   quantity: number;
   discount?: number;
 };
-
 const calculateTotalPrice = (products: Product[]): number => {
   const total = products.reduce((total, product) => {
     const price = product.price * product.quantity;
@@ -94,4 +129,3 @@ const calculateTotalPrice = (products: Product[]): number => {
   }, 0);
   return total;
 };
-
